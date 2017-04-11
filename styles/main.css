@@ -19,7 +19,6 @@ body {
     position: relative;
     padding: 0.5rem;
     background-color: rgba(101,18,95,0.5);
-     /* #2 */
      z-index: 1;
  }
 
@@ -36,7 +35,6 @@ body {
      right: 0;
      height: 100px;
      color: white;
-     /* #3 */
      text-decoration: none;
  }
  
@@ -46,7 +44,6 @@ body {
      height: 100%;
      padding-left: 1rem;
      padding-right: 1rem;
-     /* #4 */
      vertical-align: middle;
      color: white;
      font-size: 0.625rem;

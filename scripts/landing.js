@@ -1,18 +1,18 @@
 var pointsArray = document.getElementsByClassName('point');
 
+var revealPoint = function(point) {
+    point.style.opacity = 1;
+    point.style.transform = "scaleX(1) translateY(0)";
+    point.style.msTransform = "scaleX(1) translateY(0)";
+    point.webkitTransform = "scaleX(1) translateY(0)";
+} ;
+
 var animatePoints = function(points) {
-     var revealPoint = function(index) {
-         points[index].style.opacity = 1;
-         points[index].style.transform = "scaleX(1) translateY(0)";
-         points[index].style.msTransform = "scaleX(1) translateY(0)";
-         points[index].webkitTransform = "scaleX(1) translateY(0)";
-     } 
-    for(var i=0; i < points.length; i++) {
-        revealPoint(i);
-    }    
- };
+    forEach(pointsArray, revealPoint);  
+};
 
 window.onload = function() {
+    // Automatically animates the points on a tall screen where scrolling can't trigger the animation
     if (window.innerHeight > 950) {
         animatePoints(pointsArray);
     }

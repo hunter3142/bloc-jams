@@ -120,6 +120,7 @@ var updateSeekBarWhileSongPlays = function() {
         currentSoundFile.bind('timeupdate', function(event) {
             var seekBarFillRatio = this.getTime() / this.getDuration();
             var $seekBar = $('.seek-control .seek-bar');
+            $('.current-time').text(buzz.toTimer(currentSoundFile.getTime()));
  
             updateSeekPercentage($seekBar, seekBarFillRatio);
         });
@@ -162,7 +163,8 @@ var setupSeekBars = function() {
             var seekBarFillRatio = offsetX / barWidth;
             
             if ($seekBar.parent().attr('class') == 'seek-control') {
-                seek(seekBarFillRatio * currentSoundFile.getDuration());   
+                seek(seekBarFillRatio * currentSoundFile.getDuration());
+                currentSoundFile.play();
             } else {
                 setVolume(seekBarFillRatio);
             }
@@ -232,9 +234,10 @@ var previousSong = function() {
 var updatePlayerBarSong = function() {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
-    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
-    
+    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist); 
     $('.main-controls .play-pause').html(playerBarPauseButton);
+    
+    $('.total-time').text(buzz.toTimer(currentSongFromAlbum.duration));
 };
 
 var togglePlayFromPlayerBar = function() {
@@ -270,6 +273,7 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
